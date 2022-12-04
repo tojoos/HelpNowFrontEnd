@@ -10,6 +10,14 @@ h2 {
   color: #5D3FD3;
 }
 
+.logo {
+  font-size: 140px;
+  line-height: 60px;
+  margin-bottom: 80px;
+  margin-top: 40px;
+  font-weight: 900;
+}
+
 #content {
   padding: 70px 0;
 }
