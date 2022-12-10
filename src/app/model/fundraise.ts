@@ -6,7 +6,6 @@ export interface Fundraise {
   id: number;
   name: string;
   imageUrl: string;
-  salary: number;
   description: string;
   requiredAmount: number;
   raisedAmount: number;
