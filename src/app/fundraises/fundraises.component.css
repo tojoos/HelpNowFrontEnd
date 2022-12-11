@@ -2,8 +2,24 @@ body{
   background:#eee;
 }
 
-.helpButton { width: 100px; height: 100px;  background: #ffffff; color: #5D3FD3; border-radius: 20px; text-align: center; line-height: 100px; font-size: 50px; z-index: 3; cursor: pointer; border: 2px solid #e6e6e6; }
-.helpButton:hover, .helpButton.active { color: #ffffff; transition: 0.5s; background: #5D3FD3; /* Old browsers */ background: -moz-linear-gradient(left, #5D3FD3 0%, #a733bb 100%); /* FF3.6-15 */ background: -webkit-linear-gradient(left, #5D3FD3 0%, #a733bb 100%); /* Chrome10-25,Safari5.1-6 */ background: linear-gradient(to right, #5D3FD3 0%, #a733bb 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5D3FD3', endColorstr='#a733bb', GradientType=1); /* IE6-9 */ border: 2px solid #ffffff; -webkit-box-shadow: 0 30px 30px 0 rgba(0, 0, 0, .13); -moz-box-shadow: 0 30px 30px 0 rgba(0, 0, 0, .13); box-shadow: 0 30px 30px 0 rgba(0, 0, 0, .13); }
+.helpButton { 
+  width: 100px; 
+  height: 100px;  
+  background: #ffffff; 
+  color: #5D3FD3; 
+  border-radius: 20px; 
+  text-align: center; 
+  line-height: 100px; 
+  font-size: 50px; 
+  z-index: 3; 
+  cursor: pointer; 
+  border: 2px solid #e6e6e6; 
+}
+
+.helpButton:hover, .helpButton.active { 
+  color: #ffffff; 
+  transition: 0.5s; 
+  background: #5D3FD3; /* FF3.6-15 */ background: -webkit-linear-gradient(left, #5D3FD3 0%, #a733bb 100%); /* Chrome10-25,Safari5.1-6 */ background: linear-gradient(to right, #5D3FD3 0%, #a733bb 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5D3FD3', endColorstr='#a733bb', GradientType=1); /* IE6-9 */ border: 2px solid #ffffff; -webkit-box-shadow: 0 30px 30px 0 rgba(0, 0, 0, .13); -moz-box-shadow: 0 30px 30px 0 rgba(0, 0, 0, .13); box-shadow: 0 30px 30px 0 rgba(0, 0, 0, .13); }
 
 .card {
   box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
@@ -45,6 +61,25 @@ body{
   background: #000;
   color: #fff;
   font-weight: 700;
+}
+
+.timeCount {
+  display: block;
+  margin: 44px 0 0 0; 
+  text-align: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 13px;
+  color:#5D3FD3;
+}
+
+.orgName {
+  display: block;
+  text-align: left;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 13px;
+  color:#5D3FD3;
 }
 
 .amountBadge {
