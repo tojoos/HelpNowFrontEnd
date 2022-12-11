@@ -101,6 +101,32 @@ body{
   color:#5D3FD3;
 }
 
+@property --n {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+
+.number {
+  animation: animate 5s forwards ease;
+  counter-reset: num var(--n);
+  font-weight: bold;
+  font-size: 3rem;
+  font-family: sans-serif;
+}
+.number::before {
+  content: counter(num);
+}
+
+@keyframes animate {
+  from {
+    --n: 0;
+  }
+  to {
+    --n: var(--to);
+  }
+}
+
 .avatar {
   width: 3rem;
   height: 3rem;
@@ -115,7 +141,6 @@ body{
   margin-right: 1.5rem!important;
 }
 
-body{margin-top:20px;}
 .counter {
   background: #100028;
   height: 840px;
