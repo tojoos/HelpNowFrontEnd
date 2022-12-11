@@ -1,6 +1,5 @@
 import { Employee } from "./employee";
 import { Organization } from "./organization";
-import { User } from "./user";
 
 export interface Fundraise {
   id: number;
@@ -12,6 +11,5 @@ export interface Fundraise {
   startingDate: Date;
   endingDate: Date;
   assignedEmployees: Employee[];
-  supportingUsers: User[];
   organization: Organization;
 }
