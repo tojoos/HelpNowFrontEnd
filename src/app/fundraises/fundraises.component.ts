@@ -60,11 +60,17 @@ export class FundraisesComponent implements OnInit {
       next: (response: Fundraise[]) => {
         this.fundraises = response;
         this.fundraises.sort((f1, f2) => new Date(f1.startingDate).getTime() - new Date(f2.startingDate).getTime());
+        this.fundraises.sort((f1, f2) => this.isFundraiseFinished(f2) ? -1 : 1)
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);
       }
     });
+  }
+
+  public isFundraiseFinished(fundraise: Fundraise): boolean {
+    var toEndTime = new Date(fundraise.endingDate).getTime() - new Date().getTime();
+    return String(toEndTime) < String(0)
   }
 
   public calculateTillFundraise(fundraise: Fundraise): string {

@@ -2,6 +2,11 @@ body{
   background:#eee;
 }
 
+.muted {
+  opacity: 0.5;
+  filter: grayscale(100%);
+}
+
 .helpButton { 
   width: 100px; 
   height: 100px;  
