@@ -1,5 +1,4 @@
 import { Announcement } from "./announcement";
-import { Fundraise } from "./fundraise";
 
 export interface User {
   id: number;
@@ -7,6 +6,5 @@ export interface User {
   imageUrl: string;
   phone: string;
   email: string;
-  supportedFundraises: Fundraise[];
-  createdAnnouncements: Announcement;
+  createdAnnouncements: Announcement[];
 }

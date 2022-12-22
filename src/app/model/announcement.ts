@@ -6,5 +6,7 @@ export interface Announcement {
   imageUrl: string;
   title: string;
   description: string;
-  user: User;
+  author: User;
+  status: string;
+  creationDateTime: Date;
 }
