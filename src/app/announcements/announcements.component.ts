@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Announcement } from '../model/announcement';
 import { AnnouncementService } from '../services/announcement.service';
 import { HttpErrorResponse } from '@angular/common/http';
-
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-announcements',
@@ -35,4 +35,29 @@ export class AnnouncementsComponent implements OnInit {
     });
   }
 
+  public onAddAnnouncement(addForm: NgForm): void {
+    document.getElementById('add-announcement-form')!.click();
+    this.announcementService.addAnnouncement(addForm.value).subscribe({
+      next: (response: Announcement) => {
+        console.log(response);
+        this.getAnnouncements();
+        addForm.reset();
+        },
+      error: (error: HttpErrorResponse) => {
+        alert(error.message);
+        addForm.reset();
+      }
+    });
+  }
+
+  public onOpenModal(mode: string, announcement?: Announcement): void {
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+    button.setAttribute('data-target', '#addAnnouncementModal');
+    container!.appendChild(button);
+    button.click();
+  }
 }

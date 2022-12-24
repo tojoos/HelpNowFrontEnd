@@ -1,9 +1,19 @@
 <body>
-<div class="container py-5">
+<div id="main-container" class="container py-5">
 
-  <div class="row text-center text-white mb-5">
+  <div class="row text-center text-white mb-0">
     <div class="col-lg-8 mx-auto">
       <h1 class="display-4">Announcements</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="d-flex flex-wrap align-items-center justify-content-end mb-3">
+      <div>
+        <button type="button" class="btn btn-soft-primary btn-sm w-120 text-white" (click)="onOpenModal('add')"><i
+          class="bx bx-plus me-1"></i>Want to share? Create new announcement now
+        </button>
+      </div>
     </div>
   </div>
 
@@ -94,4 +104,41 @@
   </div>
 
 </div>
+
+<div class="modal fade" id="addAnnouncementModal" tabindex="-1" role="dialog" aria-labelledby="addAnnouncementModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addAnnouncementModalLabel">Add Announcement</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="onAddAnnouncement(addForm)">
+          <div class="form-group">
+            <label for="name">Title</label>
+            <input type="text" ngModel name="title" class="form-control" placeholder="Announcement title" required>
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea rows="4" type="description" ngModel name="description"
+             class="form-control" id="description" placeholder="Description of the announcement" required="required"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="imageUrl">Image URL (Optional)</label>
+            <input type="text" ngModel name="imageUrl" class="form-control" placeholder="Image URL">
+          </div>
+          <!-- data autogenerrowania, autor auto dodawany, status na auto ze open -->
+          <div class="modal-footer">
+            <button type="button" id="add-announcement-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
