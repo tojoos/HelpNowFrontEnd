@@ -47,6 +47,7 @@ export class AppComponent implements OnInit {
     sessionStorage.removeItem('access_token');
 
     this.router.navigate(['/login']);
+    window.location.reload();
   }
 
   public getAnnouncements(): void {
