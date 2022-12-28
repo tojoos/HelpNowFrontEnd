@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Announcement } from '../model/announcement';
 import { AnnouncementService } from '../services/announcement.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { NgForm } from '@angular/forms';
+import { FormControl, NgForm } from '@angular/forms';
+import { User } from '../model/user';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-announcements',
@@ -12,12 +14,40 @@ import { NgForm } from '@angular/forms';
 export class AnnouncementsComponent implements OnInit {
   public announcements: Announcement[] = [];
   public latestAnnouncement!: Announcement | undefined;
+  public currentUser!: User;
 
-  constructor(private announcementService: AnnouncementService) {
+  constructor(private announcementService: AnnouncementService,
+    private userService: UserService) {
   }
+
+  author: User = {
+    username: 'foo',
+    password: 'bar',
+    name: "John",
+    lastName: 'Walberg',
+    imageUrl: '',
+    phone: '782126821',
+    email: 'exmaple@gmail.com',
+    id: 10,
+    roles: [],
+    createdAnnouncements: [],
+  } 
 
   ngOnInit() {
     this.getAnnouncements();
+        
+    var username = '';
+    var localUsername = localStorage.getItem('username')!
+    var sessionUsername = sessionStorage.getItem('username')!
+
+    if (localUsername) {
+      username = localUsername
+    } 
+    if (sessionUsername) {
+      username = sessionUsername
+    }
+
+    this.getUserByUsername(username)
   }
 
   public getAnnouncements(): void {
@@ -37,6 +67,10 @@ export class AnnouncementsComponent implements OnInit {
 
   public onAddAnnouncement(addForm: NgForm): void {
     document.getElementById('add-announcement-form')!.click();
+
+    addForm.value.author = this.currentUser
+    console.log(addForm.value)
+
     this.announcementService.addAnnouncement(addForm.value).subscribe({
       next: (response: Announcement) => {
         console.log(response);
@@ -47,6 +81,15 @@ export class AnnouncementsComponent implements OnInit {
         alert(error.message);
         addForm.reset();
       }
+    });
+  }
+
+  public getUserByUsername(username: string): void {
+    this.userService.getByUsername(username).subscribe({
+      next: (response: User) => {
+        console.log(response);
+        this.currentUser = response
+        }
     });
   }
 
