@@ -39,6 +39,19 @@
   border-radius: 0.75rem;
 }
 
+.ico-thumbnail {
+  padding: 0.25rem;
+  background-color: #f1f3f7;
+  border: 1px solid #eff0f2;
+  border-radius: 0.75rem;
+  font-size: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: #3c2a87;
+}
+
 .avatar-title {
   align-items: center;
   background-color: #5D3FD3;
@@ -129,4 +142,12 @@ a {
   -webkit-transform: scaleX(1);
   -ms-transform: scaleX(1);
   transform: scaleX(1);
+}
+
+.ico {
+  color: #3c2a87;
+}
+
+.btn-dlt {
+  background-color: #5D3FD3 !important;
 }
