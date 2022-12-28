@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { Announcement } from './model/announcement';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AnnouncementService } from './services/announcement.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +11,42 @@ import { AnnouncementService } from './services/announcement.service';
 })
 export class AppComponent implements OnInit {
   public latestAnnouncements: Announcement[] = [];
-  
-  constructor(private announcementService: AnnouncementService) {
+  public username!: string;
+
+  constructor(private announcementService: AnnouncementService, private router: Router) {
   }
 
   ngOnInit() {
     this.getAnnouncements();
+  }
+
+  public isUserLoggedIn(): boolean {
+    var localUsername = localStorage.getItem('username')!
+    var sessionUsername = sessionStorage.getItem('username')!
+    if (localUsername) {
+      this.username = localUsername
+    } 
+    if (sessionUsername) {
+      this.username = sessionUsername
+    }
+
+    var localAccessToken = localStorage.getItem('access_token')
+    var sessionAccessToken = sessionStorage.getItem('access_token')
+
+    if (localAccessToken != null || sessionAccessToken != null) {
+      return true
+    }
+    return false
+  }
+
+  public logUserOut(): void {
+    localStorage.removeItem('username');
+    localStorage.removeItem('access_token');
+
+    sessionStorage.removeItem('username');
+    sessionStorage.removeItem('access_token');
+
+    this.router.navigate(['/login']);
   }
 
   public getAnnouncements(): void {

@@ -24,6 +24,11 @@
           <li><a routerLink="/contact" class="nav-item nav-link">Contact</a></li>
         </ul>
       </div>
+      <div class="text-end ml-5">
+        <a *ngIf="isUserLoggedIn()===false" routerLink="/login" class="btn btn-outline-light me-2 btn-color">Login</a>
+        <span *ngIf="isUserLoggedIn()===true"  class="welcome-text text-light me-3">Hello, {{username}}!</span>
+        <a *ngIf="isUserLoggedIn()===true" (click)="logUserOut()" class="btn btn-outline-light me-2 btn-color">Log out</a>
+      </div>
     </div>
   </nav>
 </header>

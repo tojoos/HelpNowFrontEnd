@@ -63,6 +63,21 @@ body {
   outline: none;
 }
 
+.navbar .welcome-text {
+  top: 3px;
+  position: relative;
+}
+
+.btn-color {
+  color: white !important;
+  font-weight: 500;
+}
+
+.btn-color:hover {
+  color: #654ea3 !important;
+  font-weight: 500;
+}
+
 .navbar .navbar-toggler .menu-icon-bar {
   position: absolute;
   left: 15px;
